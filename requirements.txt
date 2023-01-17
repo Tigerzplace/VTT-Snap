@@ -1,0 +1,9 @@
+argparse==1.4.0
+concurrent-futures==3.3.0
+moviepy==1.0.3
+pydub==0.24.1
+pydub-effects==0.1.1
+pytz==2022.1
+resampy==0.3.1
+speechrecognition==3.8.1
+tqdm==4.72.2
