@@ -10,15 +10,18 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 
 def get_args():
     parser = argparse.ArgumentParser(description='Extract audio from video and transcribe it')
-    parser.add_argument('video_file', metavar='video_file', type=str, help='python convert.py path/to/video.mp4')
+    parser.add_argument('video_file', metavar='video_file', type=str, help='python script.py path/to/video.mp4')
     return parser.parse_args()
 
 
 def process_audio(r, video_file, i, l):
+        # Check if the 'parts' directory exists, and create it if it doesn't
+
+        
     ffmpeg_extract_subclip(video_file, l[i]-2*(l[i]!=0), l[i+1], targetname="parts/cut{}.mp4".format(i+1))
     clip = mp.VideoFileClip(r"parts/cut{}.mp4".format(i+1)) 
-    clip.audio.write_audiofile(r"audios/audio{}.wav".format(i+1))
-    with sr.AudioFile("audios/audio{}.wav".format(i+1)) as source:
+    clip.audio.write_audiofile(r"audios/converted{}.wav".format(i+1))
+    with sr.AudioFile("audios/converted{}.wav".format(i+1)) as source:
         r.adjust_for_ambient_noise(source)  
         audio_file = r.record(source)
     result = r.recognize_google(audio_file)
@@ -40,7 +43,7 @@ def process_video(video_file):
     except Exception as e:
         print(e)
     finally:
-        # remove
+       
         chunk_path = "parts"
         converted_path = "audios"
 
@@ -58,4 +61,9 @@ def process_video(video_file):
 
 if __name__ == "__main__":
     args = get_args()
+    
+    if not os.path.exists("parts"):
+        os.makedirs("parts")
+    if not os.path.exists("audios"):
+        os.makedirs("audios")
     process_video(args.video_file)
