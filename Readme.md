@@ -30,7 +30,7 @@ python convert.py path/to/video.mp4
 Please note that the script is using Google Speech Recognition API so you need to have an active internet connection to run the script. Also it may take a while to transcribe a long video.
 
 
-[Full Tutorial](http://www.tigerzplace.com/2023/01/VTT-Snap-Automatically-Transcribe-Videos-to-Text.html)
+[Full Tutorial](https://www.tigerzplace.com/2023/01/VTT-Snap-Automatically-Transcribe-Videos-to-Text.html.html)
 
 VTT-Snap is a python script that allows you to automatically transcribe video to text quickly and easily. This script uses Google's Speech Recognition API to transcribe the audio of the video into text. The transcribed text will be saved in a text file named "recognized.txt". Follow the tutorial on [Tigerzplace](http://www.tigerzplace.com/2023/01/VTT-Snap-Automatically-Transcribe-Videos-to-Text.html) to learn how to use VTT-Snap to transcribe your videos.
 
